@@ -1,0 +1,126 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 ">
+            <h1 class="text-info text-center">
+                Registration
+            </h1>
+        </div>
+    </div>
+</div>
+<div class="container  w-md-50 w-100">
+    <div class="row">
+        <div class="col-12 text-center p-3 pt-5" style="background-color:aqua;">
+            <form #userForm="ngForm" novalidate [class.d-none]="submitted" (ngSubmit)="onSubmit(userForm.value)">
+                <!-- {{userForm.value|json}}
+          <hr> -->
+                <!--
+          {{userModel | json}} -->
+
+                <div class="form-group">
+                    <!-- <label for="username">Username</label> -->
+                    <input type="text" class="form-control" required #uname="ngModel"
+                        [class.is-invalid]="uname.invalid && uname.touched" [ngModel] placeholder="Username"
+                        name="username" id="username">
+                    <div class="text-left" *ngIf="uname.invalid && uname.touched && uname.errors">
+                        <small *ngIf="uname.errors.required" class="text-danger">Username required
+                        </small>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="email">Email address:</label> -->
+                    <input type="email" class="form-control" [class.is-invalid]="name.invalid && name.touched" required
+                        #name="ngModel" pattern="^[^\d]([a-z\d\.-])+@([a-z\d]+)\.([a-z]{2,3})(\.[a-z]{2,8})?$"
+                        placeholder="Email address" name="email" id="email" [ngModel]>
+                    <div class="text-left" *ngIf="name.invalid && name.touched && name.errors">
+                        <small *ngIf="name.errors.required" class="text-danger">Email required
+                        </small>
+                        <small *ngIf="name.errors.pattern" class="text-danger">Email Should be Valid</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <!-- <label for="pwd">Password:</label> -->
+                    <input type="password" required #password="ngModel" required
+                        [class.is-invalid]="password.invalid && password.touched"
+                        pattern="^(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" class="form-control"
+                        placeholder="Enter password" name="password" id="pwd" [ngModel]>
+                    <div class="text-left" *ngIf="password.invalid && password.touched && password.errors">
+                        <small *ngIf="password.errors.required" class="text-danger">Password Must be 8 characters
+                        </small>
+                        <small *ngIf="password.errors.pattern" class="text-danger">Password Must contain Special
+                            Character and</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!-- <label for="cpwd">Confirm Password:</label> -->
+                    <input type="password" #confirmpassword="ngModel" required
+                        (blur)="confirm(confirmpassword.value,password.value)"
+                        [class.is-invalid]="hasError && confirmpassword.touched" class="form-control"
+                        placeholder="Confirm Password" name="confirmpassword" id="cpwd" [ngModel]>
+                    <!-- <small *ngIf="hasError">Chupinchhu</small> -->
+                    <div class="text-left">
+                        <small *ngIf="hasError" class="text-danger">Password Must Match</small>
+                    </div>
+                    <div class="text-left" *ngIf="confirmpassword.errors && confirmpassword.touched">
+                        <small *ngIf="confirmpassword.errors.required" class="text-danger">Password is required </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <!-- <label for="phone">Phone:</label> -->
+                    <input type="tel" class="form-control" required #phone="ngModel" pattern="^[1-9][0-9]{9}$"
+                        placeholder="Enter Phone Number" id="phone" name="phone" [ngModel]
+                        [class.is-invalid]="phone.invalid && phone.touched">
+                    <div class="text-left" *ngIf="phone.invalid && phone.touched && phone.errors">
+                        <small *ngIf="phone.errors.required" class="text-danger">Phone number is required
+                        </small>
+                        <small *ngIf="phone.errors.pattern" class="text-danger">Phone number must be valid</small>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+            <select class="custom-select" [(ngModel)]="userModel.topic" name="menu">
+              <option value="user" selected>Im interested Menu</option>
+              <option *ngFor="let topic of topics">{{topic}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="">Choose Option</label>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" [(ngModel)]="userModel.option" class="form-check-input" name="option"
+                  value="morning">Option 1
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" [(ngModel)]="userModel.option" class="form-check-input" name="option"
+                  value="evening">Option 2
+              </label>
+            </div>
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" required name="updates" [(ngModel)]="userModel.updates" type="checkbox"> Remember me
+            </label>
+          </div> -->
+
+
+                <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-primary">Register</button>
+                <button routerLink="login" class="btn btn-success ml-4">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<div class="container" *ngIf="submitted">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-success">Form Succesfully Submitted Thank You!!!!</h4>
+            <button routerLink="login" class="btn btn-success ml-4">Login</button>
+        </div>
+    </div>
+</div>
