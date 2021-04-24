@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
+declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +16,12 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+    $(document).ready(() => {
+      //alert('I am Called From jQuery');
+      // $(window).on("load", function () {
+      $(".loader-wrapper").fadeOut(5000);
+      //});
+    });
 
   }
 
