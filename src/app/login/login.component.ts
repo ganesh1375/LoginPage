@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     $(document).ready(() => {
       //alert('I am Called From jQuery');
       // $(window).on("load", function () {
-      $(".loader-wrapper").fadeOut(5000);
+      $(".loader-wrapper").fadeOut(2000);
       //});
     });
 
@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
           this.displayUserDetails = true;
         }
         else {
-
           console.log("NO Not Possible");
         }
       }

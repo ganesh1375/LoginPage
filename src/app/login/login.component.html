@@ -1,25 +1,26 @@
 <div class="main pb-5 pt-5" *ngIf="!displayUserDetails">
-    <div class="container p-4 " style=" max-width:auto;margin:100px auto;">
-        <div class="row bg-transparent p-4">
-            <div class="col-md-6  p-4 col-12 order-md-1   order-2 bg-white">
+    <div class="container p-4  position" style=" max-width:800px;max-height:auto; margin:100px auto;">
+        <div class="row border p-4 bg-light shadow" style="box-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; border-radius: 20px;" >
+            <div class="col-md-6 p-4 col-12 order-md-1  order-2 ">
                 <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-                    <div class="form-group w-100">
-                        <label for="exampleInputEmail1">Email address</label>
+                    <div class="form-group w-100 ">
+                        <label for="exampleInputEmail1">Email address </label>
                         <input type="email" #email="ngModel" (focus)="dnone()"
-                            [class.is-invalid]="email.invalid && email.touched" required class="form-control input-sm"
+                            [class.is-invalid]="email.invalid && email.touched" required class="form-control shadow input-sm"
                             id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" name="email"
                             [ngModel]>
 
                         <small *ngIf="invalidEmail" class="text-danger">Invalid Email Please Register</small>
 
                         <div *ngIf="email.invalid && email.touched && email.errors">
-                            <small *ngIf="email.errors.required" class="text-danger">Email Required</small>
+                            <small style="font-size: 20px;" *ngIf="email.errors.required" class="text-danger pt-1">Email Required</small>
 
                         </div>
                     </div>
+                    <!-- <span class="glyphicon glyphicon-user"></span> -->
                     <div class="form-group w-100">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" required class="form-control" name="password" [ngModel]
+                        <input type="password" required class="form-control shadow" name="password" [ngModel]
                             id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <!-- <div class="form-check">
@@ -31,7 +32,7 @@
 
                 </form>
             </div>
-            <div class="col-md-6 col-12 order-md-2 order-1 backup d-flex align-items-end">
+            <div class=" shadow col-md-6  col-12 order-md-2 order-1 backup d-flex align-items-end" style="border-radius: 25px;">
                 <p class="text-light font-weight-bolder" style="font-size: 30px;">Hello <br> Welcome <br> Back</p>
             </div>
         </div>
